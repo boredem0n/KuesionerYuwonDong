@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Survei Minat Beli Kedai YuwonDong</title>
+    <title>Survei Minat Pembelian Produk Kedai YuwonDong</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -48,7 +48,7 @@
         <!-- Header -->
         <header class="text-center mb-10">
             <img src="https://placehold.co/150x150/f97316/ffffff?text=YuwonDong" alt="Logo Kedai YuwonDong" class="mx-auto mb-4 rounded-full shadow-lg border-4 border-white dark:border-[#2d170c]">
-            <h1 class="text-4xl font-bold text-[#E87500]">Kedai YuwonDong</h1>
+            <h1 class="text-4xl font-bold text-[#E87500]">Kedai Yuwon Dong</h1>
             <p class="text-lg text-gray-600 dark:text-gray-400">Survei Minat Beli Mahasiswa FISIP UNDIP</p>
         </header>
 
@@ -58,6 +58,7 @@
                 <div id="progress-bar" class="bg-[#F9A620] h-2.5 rounded-r-full progress-bar-fill" style="width: 0%"></div>
             </div>
 
+            <!-- PERUBAHAN 1: Tambahkan action dan method ke tag form -->
             <form id="survey-form" action="https://formspree.io/f/xovknvgl" method="POST" class="p-8 md:p-12">
                 <!-- Step 1: Landing Page -->
                 <div id="step-1" class="form-step active">
@@ -476,9 +477,8 @@
             });
         });
         
+        // Let the form submit to Formspree, but validate first
         form.addEventListener('submit', (e) => {
-            // We let the default HTML submission to Formspree happen
-            // But we do one final validation check before allowing it
             if (!validateStep(currentStep)) {
                 e.preventDefault(); // Stop the form from submitting if validation fails
             }
