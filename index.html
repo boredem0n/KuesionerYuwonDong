@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survei Kepuasan Kedai YuwonDong</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://source.unsplash.com/1200x800/?korean-food,street-food');
+            background-size: cover;
+            background-position: center;
+        }
+        .form-step {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .form-step.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .radio-label input:checked + .radio-custom {
+            background-color: #F9A620; /* Custom orange */
+            border-color: #F9A620;
+        }
+        .radio-label input:checked + .radio-custom .dot {
+            transform: scale(1);
+        }
+        .progress-bar-fill {
+            transition: width 0.3s ease-in-out;
+        }
+        .lainnya-input {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-[#F5EFE6] dark:bg-[#412111] text-[#412111] dark:text-gray-200">
+
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <img src="https://placehold.co/150x150/f97316/ffffff?text=YuwonDong" alt="Logo Kedai YuwonDong" class="mx-auto mb-4 rounded-full shadow-lg border-4 border-white dark:border-[#2d170c]">
+            <h1 class="text-4xl font-bold text-[#E87500]">Yuwon Dong</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-400">Survei Minat Beli Mahasiswa FISIP UNDIP</p>
+        </header>
+
+        <div class="bg-white dark:bg-[#2d170c] rounded-2xl shadow-xl overflow-hidden">
+            <!-- Progress Bar -->
+            <div class="w-full bg-gray-200 dark:bg-slate-700 h-2.5">
+                <div id="progress-bar" class="bg-[#F9A620] h-2.5 rounded-r-full progress-bar-fill" style="width: 0%"></div>
+            </div>
+
+            <form id="survey-form" class="p-8 md:p-12">
+                <!-- Step 1: Landing Page -->
+                <div id="step-1" class="form-step active">
+                    <div class="hero-bg text-white p-10 rounded-lg text-center mb-8">
+                        <h2 class="text-3xl font-bold mb-4">Selamat Datang di Survei Kami!</h2>
+                        <p class="mb-6 text-justify">Saat ini saya, Emanuella Sharen Gunawan, mahasiswa program studi Administrasi Bisnis sedang melaksanakan penelitian sebagai syarat kelulusan Studi Strata 1 (S1) Administrasi Bisnis dengan judul penelitian “Rational Buying Motives dan Emotional Buying Motives dalam Pembentukan Purchase Interest Mahasiswa (Studi pada Laboratorium Kewirausahaan Mahasiswa FISIP UNDIP Kedai YuwonDong)”. Mohon kesediaan Saudara/i Mahasiswa untuk menjawab pertanyaan-pertanyaan berikut ini sesuai dengan kondisi yang sebenarnya. Seluruh bentuk informasi yang diberikan dalam kuesioner ini akan dijaga kerahasiaannya dan hanya digunakan untuk kepentingan penelitian. Atas perhatian dan kesediaan Saudara/i Mahasiswa untuk berpartisipasi dalam penelitian ini, saya ucapkan terima kasih.</p>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="next-btn bg-[#F9A620] hover:bg-[#E87500] text-white font-bold py-3 px-8 rounded-lg transition-transform transform hover:scale-105 shadow-lg">
+                            Mulai &rarr;
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Step 2: Screening Questions -->
+                <div id="step-2" class="form-step">
+                    <h2 class="text-2xl font-bold mb-6 text-center text-[#E87500]">Pertanyaan Screening</h2>
+                    <div class="space-y-6">
+                        <div class="question-container bg-[#FDFBF8] dark:bg-[#2d170c]/50 p-6 rounded-lg shadow-md">
+                            <p class="font-semibold text-gray-800 dark:text-gray-200 mb-4">1. Apakah Anda merupakan mahasiswa aktif FISIP Undip?</p>
+                            <div class="flex gap-4">
+                                <label class="radio-label flex items-center"><input type="radio" name="screening_fisip" value="ya" class="hidden" required> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">Ya</span></label>
+                                <label class="radio-label flex items-center"><input type="radio" name="screening_fisip" value="tidak" class="hidden"> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">Tidak</span></label>
+                            </div>
+                        </div>
+                        <div class="question-container bg-[#FDFBF8] dark:bg-[#2d170c]/50 p-6 rounded-lg shadow-md">
+                            <p class="font-semibold text-gray-800 dark:text-gray-200 mb-4">2. Apakah Anda pernah melakukan pembelian di Kedai YuwonDong?</p>
+                             <div class="flex gap-4">
+                                <label class="radio-label flex items-center"><input type="radio" name="screening_pernah_beli" value="ya" class="hidden" required> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">Ya</span></label>
+                                <label class="radio-label flex items-center"><input type="radio" name="screening_pernah_beli" value="tidak" class="hidden"> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">Tidak</span></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-10 flex justify-end">
+                        <button type="button" id="screening-next-btn" class="bg-[#F9A620] hover:bg-[#E87500] text-white font-bold py-2 px-6 rounded-lg transition">Lanjut</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Profil & Kebiasaan -->
+                <div id="step-3" class="form-step">
+                    <h2 class="text-2xl font-bold mb-6 text-center text-[#E87500]">Profil Responden & Kebiasaan Pembelian</h2>
+                    <!-- Identitas -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="question-container md:col-span-2">
+                            <label for="nama" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nama Lengkap</label>
+                            <input type="text" id="nama" name="nama" class="mt-1 block w-full px-4 py-2 bg-gray-50 dark:bg-[#412111] border border-gray-300 dark:border-slate-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F9A620] focus:border-transparent transition" required>
+                        </div>
+                        <div class="question-container">
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Jenis Kelamin</label>
+                            <select id="jenis_kelamin" name="jenis_kelamin" class="mt-1 block w-full px-4 py-2 bg-gray-50 dark:bg-[#412111] border border-gray-300 dark:border-slate-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F9A620] focus:border-transparent transition" required>
+                                <option value="">Pilih...</option>
+                                <option value="Laki-Laki">Laki-Laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                         <div class="question-container">
+                            <label for="usia" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Usia</label>
+                            <input type="number" id="usia" name="usia" min="17" max="100" class="mt-1 block w-full px-4 py-2 bg-gray-50 dark:bg-[#412111] border border-gray-300 dark:border-slate-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F9A620] focus:border-transparent transition" required>
+                        </div>
+                        <div class="question-container md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Rata-rata uang saku bulanan</label>
+                            <select id="uang_saku" name="uang_saku" class="mt-1 block w-full px-4 py-2 bg-gray-50 dark:bg-[#412111] border border-gray-300 dark:border-slate-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F9A620] focus:border-transparent transition" required>
+                                <option value="">Pilih...</option>
+                                <option value="<1jt">Kurang dari Rp 1.000.000</option>
+                                <option value="1jt-1.5jt">Rp 1.000.000 - Rp 1.500.000</option>
+                                <option value="1.5jt-2jt">Rp 1.500.001 - Rp 2.000.000</option>
+                            </select>
+                        </div>
+                         <div class="question-container">
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Program Studi</label>
+                            <select id="prodi" name="program_studi" class="mt-1 block w-full px-4 py-2 bg-gray-50 dark:bg-[#412111] border border-gray-300 dark:border-slate-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F9A620] focus:border-transparent transition" required>
+                                <option value="">Pilih...</option>
+                                <option>Administrasi Publik</option>
+                                <option>Administrasi Bisnis</option>
+                                <option>Ilmu Komunikasi</option>
+                                <option>Ilmu Pemerintahan</option>
+                                <option>Hubungan Internasional</option>
+                            </select>
+                        </div>
+                        <div class="question-container">
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Tahun Masuk</label>
+                            <select id="tahun_masuk" name="tahun_masuk" class="mt-1 block w-full px-4 py-2 bg-gray-50 dark:bg-[#412111] border border-gray-300 dark:border-slate-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F9A620] focus:border-transparent transition" required>
+                                 <option value="">Pilih...</option>
+                                 <option>&lt;2020</option><option>2020</option><option>2021</option><option>2022</option><option>2023</option><option>2024</option><option>2025</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Kebiasaan Pembelian -->
+                    <div class="space-y-8 mt-8">
+                        <div class="question-container bg-[#FDFBF8] dark:bg-[#2d170c]/50 p-6 rounded-lg shadow-md">
+                            <p class="font-semibold text-gray-800 dark:text-gray-200 mb-4">Menu yang paling sering Anda konsumsi di Kedai YuwonDong?</p>
+                            <div class="space-y-2">
+                                <label class="radio-label flex items-center"><input type="radio" name="menu_favorit" value="Odeng" class="hidden" required> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">Odeng</span></label>
+                                <label class="radio-label flex items-center"><input type="radio" name="menu_favorit" value="Chicken Ricebowl" class="hidden"> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">Chicken Ricebowl</span></label>
+                                <label class="radio-label flex items-center"><input type="radio" name="menu_favorit" value="CornDog" class="hidden"> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">CornDog</span></label>
+                                <label class="radio-label flex items-center"><input type="radio" name="menu_favorit" value="RamYuwon" class="hidden"> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">RamYuwon</span></label>
+                                <label class="radio-label flex items-center"><input type="radio" name="menu_favorit" value="Es Teh Blangkon" class="hidden"> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">Es Teh Blangkon</span></label>
+                                <label class="radio-label flex items-center"><input type="radio" name="menu_favorit" value="Es Teh Krampul" class="hidden"> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">Es Teh Krampul</span></label>
+                                <label class="radio-label flex items-center"><input type="radio" name="menu_favorit" value="lainnya" class="hidden"> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">Lainnya:</span></label>
+                                <input type="text" name="menu_favorit_lainnya" class="lainnya-input mt-2 ml-7 block w-full md:w-1/2 px-4 py-2 bg-white dark:bg-[#412111] border border-gray-300 dark:border-slate-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F9A620] focus:border-transparent transition" placeholder="Sebutkan menu lainnya...">
+                            </div>
+                            <textarea name="alasan_menu" rows="2" placeholder="Alasan memilih menu tersebut..." class="mt-4 block w-full px-4 py-2 bg-white dark:bg-[#412111] border border-gray-300 dark:border-slate-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F9A620] focus:border-transparent transition" required></textarea>
+                        </div>
+                        <div class="question-container bg-[#FDFBF8] dark:bg-[#2d170c]/50 p-6 rounded-lg shadow-md">
+                             <p class="font-semibold text-gray-800 dark:text-gray-200 mb-4">Pada kesempatan atau situasi apa biasanya Anda menikmati hidangan dari Kedai YuwonDong?</p>
+                             <div class="space-y-2">
+                                <label class="radio-label flex items-center"><input type="radio" name="situasi" value="Lapar" class="hidden" required> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">Saat Lapar</span></label>
+                                <label class="radio-label flex items-center"><input type="radio" name="situasi" value="Sarapan" class="hidden"> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">Sarapan</span></label>
+                                <label class="radio-label flex items-center"><input type="radio" name="situasi" value="Makan Siang" class="hidden"> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">Makan Siang</span></label>
+                                <label class="radio-label flex items-center"><input type="radio" name="situasi" value="Cemilan" class="hidden"> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">Sebagai Cemilan</span></label>
+                                <label class="radio-label flex items-center"><input type="radio" name="situasi" value="lainnya" class="hidden"> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">Lainnya:</span></label>
+                                <input type="text" name="situasi_lainnya" class="lainnya-input mt-2 ml-7 block w-full md:w-1/2 px-4 py-2 bg-white dark:bg-[#412111] border border-gray-300 dark:border-slate-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F9A620] focus:border-transparent transition" placeholder="Sebutkan situasi lainnya...">
+                             </div>
+                             <textarea name="alasan_situasi" rows="2" placeholder="Alasan memilih pada situasi tersebut..." class="mt-4 block w-full px-4 py-2 bg-white dark:bg-[#412111] border border-gray-300 dark:border-slate-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F9A620] focus:border-transparent transition" required></textarea>
+                        </div>
+                         <div class="question-container bg-[#FDFBF8] dark:bg-[#2d170c]/50 p-6 rounded-lg shadow-md">
+                            <p class="font-semibold text-gray-800 dark:text-gray-200 mb-4">Bagaimana cara yang paling sering Anda gunakan untuk memesan dari Kedai YuwonDong?</p>
+                            <div class="space-y-2">
+                               <label class="radio-label flex items-center"><input type="radio" name="cara_pesan" value="Langsung" class="hidden" required> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">Datang dan memesan langsung di kedai</span></label>
+                               <label class="radio-label flex items-center"><input type="radio" name="cara_pesan" value="Pick-up" class="hidden"> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">Pesan via WhatsApp, lalu ambil di kedai (Pick-up)</span></label>
+                               <label class="radio-label flex items-center"><input type="radio" name="cara_pesan" value="Delivery" class="hidden"> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">Menggunakan layanan pesan-antar (Delivery)</span></label>
+                               <label class="radio-label flex items-center"><input type="radio" name="cara_pesan" value="lainnya" class="hidden"> <span class="radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition"><span class="dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition"></span></span><span class="ml-2">Lainnya:</span></label>
+                               <input type="text" name="cara_pesan_lainnya" class="lainnya-input mt-2 ml-7 block w-full md:w-1/2 px-4 py-2 bg-white dark:bg-[#412111] border border-gray-300 dark:border-slate-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F9A620] focus:border-transparent transition" placeholder="Sebutkan cara lainnya...">
+                            </div>
+                         </div>
+                    </div>
+                    <div class="mt-10 flex justify-between">
+                        <button type="button" class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg transition">Kembali</button>
+                        <button type="button" class="next-btn bg-[#F9A620] hover:bg-[#E87500] text-white font-bold py-2 px-6 rounded-lg transition">Lanjut</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Rational Buying Motives -->
+                <div id="step-4" class="form-step">
+                    <h2 class="text-2xl font-bold mb-2 text-center text-[#E87500]">Kuesioner</h2>
+                    <p class="text-center text-gray-600 dark:text-gray-400 mb-6">Variabel: Rational Buying Motives</p>
+                    <div id="rational-questions-container" class="space-y-8"></div>
+                    <div class="mt-10 flex justify-between">
+                        <button type="button" class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg transition">Kembali</button>
+                        <button type="button" class="next-btn bg-[#F9A620] hover:bg-[#E87500] text-white font-bold py-2 px-6 rounded-lg transition">Lanjut</button>
+                    </div>
+                </div>
+
+                <!-- Step 5: Emotional Buying Motives -->
+                <div id="step-5" class="form-step">
+                    <h2 class="text-2xl font-bold mb-2 text-center text-[#E87500]">Kuesioner</h2>
+                     <p class="text-center text-gray-600 dark:text-gray-400 mb-6">Variabel: Emotional Buying Motives</p>
+                    <div id="emotional-questions-container" class="space-y-8"></div>
+                    <div class="mt-10 flex justify-between">
+                        <button type="button" class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg transition">Kembali</button>
+                        <button type="button" class="next-btn bg-[#F9A620] hover:bg-[#E87500] text-white font-bold py-2 px-6 rounded-lg transition">Lanjut</button>
+                    </div>
+                </div>
+                
+                <!-- Step 6: Purchase Interest -->
+                <div id="step-6" class="form-step">
+                    <h2 class="text-2xl font-bold mb-2 text-center text-[#E87500]">Kuesioner</h2>
+                    <p class="text-center text-gray-600 dark:text-gray-400 mb-6">Variabel: Purchase Interest</p>
+                    <div id="purchase-interest-questions-container" class="space-y-8"></div>
+                    <div class="mt-10 flex justify-between">
+                        <button type="button" class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg transition">Kembali</button>
+                        <button type="button" class="next-btn bg-[#F9A620] hover:bg-[#E87500] text-white font-bold py-2 px-6 rounded-lg transition">Lanjut</button>
+                    </div>
+                </div>
+
+                <!-- Step 7: Saran -->
+                <div id="step-7" class="form-step">
+                    <h2 class="text-2xl font-bold mb-6 text-center text-[#E87500]">Saran Untuk Kedai YuwonDong</h2>
+                    <div class="question-container">
+                        <textarea id="saran" name="saran" rows="5" placeholder="Tuliskan saran Anda di sini... (Opsional)" class="block w-full px-4 py-2 bg-white dark:bg-[#412111] border border-gray-300 dark:border-slate-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F9A620] focus:border-transparent transition"></textarea>
+                    </div>
+                     <div class="mt-10 flex justify-between">
+                        <button type="button" class="prev-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg transition">Kembali</button>
+                        <button type="submit" class="bg-[#F9A620] hover:bg-[#E87500] text-white font-bold py-2 px-6 rounded-lg transition">Kirim Jawaban</button>
+                    </div>
+                </div>
+
+                <!-- Step 8: Thank You (Success) -->
+                <div id="step-8" class="form-step text-center">
+                    <div class="mb-6">
+                        <svg class="w-24 h-24 mx-auto text-[#F9A620]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h2 class="text-3xl font-bold text-[#E87500] mb-4">Terima Kasih!</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg">Terima kasih telah meluangkan waktu untuk berpartisipasi dalam survei ini. Jawaban Anda sangat berharga untuk penelitian kami.</p>
+                </div>
+                
+                <!-- Step 9: Ineligible -->
+                <div id="step-9" class="form-step text-center">
+                    <div class="mb-6">
+                         <svg class="w-24 h-24 mx-auto text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path></svg>
+                    </div>
+                    <h2 class="text-3xl font-bold text-red-500 mb-4">Mohon Maaf</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg">Survei ini hanya ditujukan untuk mahasiswa aktif FISIP Undip yang pernah melakukan pembelian di Kedai YuwonDong. Terima kasih atas pengertiannya.</p>
+                </div>
+            </form>
+        </div>
+
+        <footer class="text-center mt-8 text-sm text-gray-500 dark:text-gray-400">
+            <p>&copy; 2025 Emanuella Sharen Gunawan - Penelitian Administrasi Bisnis, FISIP UNDIP</p>
+        </footer>
+    </div>
+
+    <script>
+        const form = document.getElementById('survey-form');
+        const formSteps = document.querySelectorAll('.form-step');
+        const nextBtns = document.querySelectorAll('.next-btn');
+        const prevBtns = document.querySelectorAll('.prev-btn');
+        const progressBar = document.getElementById('progress-bar');
+        
+        let currentStep = 1;
+        const totalVisibleSteps = 8; 
+
+        // --- Question Data ---
+        const options = ["Sangat Sesuai", "Sesuai", "Netral", "Tidak Sesuai", "Sangat Tidak Sesuai"];
+        const rationalQuestions = [
+            "Harga produk di Kedai YuwonDong sesuai dengan daya beli saya sebagai mahasiswa.",
+            "Menurut saya, harga di Kedai YuwonDong sesuai dengan kualitas produk yang ditawarkan.",
+            "Kemasan produk dari Kedai YuwonDong rapi dan aman.",
+            "Pelayanan staf di Kedai YuwonDong ramah dan responsif.",
+            "Lokasi Kedai YuwonDong yang dekat dengan area perkuliahan menjadi alasan saya untuk membeli."
+        ];
+        const emotionalQuestions = [
+            "Menu dari Kedai YuwonDong efektif untuk memperbaiki suasana hati saat saya lelah atau jenuh.",
+            "Saya tertarik membeli produk di YuwonDong karena namanya yang unik (terinspirasi dari nama dekan).",
+            "Saya membeli produk YuwonDong karena ingin mendukung program kewirausahaan mahasiswa FISIP.",
+            "Saya tertarik untuk mencoba makanan yang dibuat dan dijual oleh sesama mahasiswa.",
+            "Ketertarikan saya pada budaya Korea menjadi salah satu pendorong untuk mencoba menu di YuwonDong."
+        ];
+        const purchaseInterestQuestions = [
+            "Saya tertarik untuk mencoba menu yang direkomendasikan oleh staf YuwonDong.",
+            "Saya akan antusias jika Kedai YuwonDong mengeluarkan varian menu baru di masa depan.",
+            "Saya memiliki keinginan yang besar untuk mencoba menu lain yang belum pernah saya beli di YuwonDong.",
+            "Saya sering merekomendasikan Kedai YuwonDong kepada teman-teman saya.",
+            "Saya tertarik untuk melakukan pembelian ulang di Kedai YuwonDong."
+        ];
+
+        // --- Dynamic Question Builder ---
+        function createQuestionElement(question, index, variableName) {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question-container bg-[#FDFBF8] dark:bg-[#2d170c]/50 p-6 rounded-lg shadow-md';
+            
+            const questionText = document.createElement('p');
+            questionText.className = 'font-semibold text-gray-800 dark:text-gray-200 mb-4';
+            questionText.textContent = `${index + 1}. ${question}`;
+            
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'flex flex-wrap gap-4 mb-4';
+
+            options.forEach((option, i) => {
+                const label = document.createElement('label');
+                label.className = 'radio-label flex items-center space-x-2 cursor-pointer text-gray-700 dark:text-gray-300';
+                
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.name = `${variableName}_${index}`;
+                input.value = 5 - i;
+                input.className = 'hidden';
+                input.required = true;
+
+                const customRadio = document.createElement('span');
+                customRadio.className = 'radio-custom w-5 h-5 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center transition';
+                const dot = document.createElement('span');
+                dot.className = 'dot w-2.5 h-2.5 rounded-full bg-white transform scale-0 transition';
+                customRadio.appendChild(dot);
+
+                label.appendChild(input);
+                label.appendChild(customRadio);
+                label.appendChild(document.createTextNode(option));
+                optionsDiv.appendChild(label);
+            });
+
+            const reasonTextarea = document.createElement('textarea');
+            reasonTextarea.name = `reason_${variableName}_${index}`;
+            reasonTextarea.rows = '2';
+            reasonTextarea.placeholder = 'Berikan alasan Anda (wajib diisi, min. 2 kata)...';
+            reasonTextarea.className = 'mt-4 block w-full px-4 py-2 bg-white dark:bg-[#412111] border border-gray-300 dark:border-slate-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F9A620] focus:border-transparent transition';
+            reasonTextarea.required = true;
+
+            questionDiv.appendChild(questionText);
+            questionDiv.appendChild(optionsDiv);
+            questionDiv.appendChild(reasonTextarea);
+            
+            return questionDiv;
+        }
+
+        function populateQuestions() {
+            const rationalContainer = document.getElementById('rational-questions-container');
+            rationalQuestions.forEach((q, i) => rationalContainer.appendChild(createQuestionElement(q, i, 'rational')));
+
+            const emotionalContainer = document.getElementById('emotional-questions-container');
+            emotionalQuestions.forEach((q, i) => emotionalContainer.appendChild(createQuestionElement(q, i, 'emotional')));
+
+            const purchaseInterestContainer = document.getElementById('purchase-interest-questions-container');
+            purchaseInterestQuestions.forEach((q, i) => purchaseInterestContainer.appendChild(createQuestionElement(q, i, 'purchase')));
+        }
+        
+        // --- Navigation & Validation ---
+        function updateProgress() {
+            let progress = (currentStep - 1) / (totalVisibleSteps - 1) * 100;
+            if (currentStep > totalVisibleSteps) progress = 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        function showStep(stepNumber) {
+            formSteps.forEach(step => step.classList.remove('active'));
+            const targetStep = document.getElementById(`step-${stepNumber}`);
+            if (targetStep) {
+                 targetStep.classList.add('active');
+            }
+            updateProgress();
+        }
+        
+       function validateStep(stepNumber) {
+            const currentStepElement = document.getElementById(`step-${stepNumber}`);
+            if (!currentStepElement) return true;
+
+            const inputs = currentStepElement.querySelectorAll('input[required], select[required], textarea[required]');
+            let alertMessage = '';
+            let firstInvalidInputParent = null;
+
+            // Clear all previous error styles from the current step
+            currentStepElement.querySelectorAll('.question-container').forEach(container => {
+                container.classList.remove('ring-2', 'ring-red-500');
+            });
+
+            for (const input of inputs) {
+                let isInputValid = true;
+
+                if (input.type === 'radio') {
+                    const radioGroup = form.querySelectorAll(`input[name="${input.name}"]`);
+                    isInputValid = Array.from(radioGroup).some(radio => radio.checked);
+                } else if (input.type === 'textarea') {
+                    // Check if the value has at least two words
+                    if (input.value.trim().split(/\s+/).filter(Boolean).length < 2) {
+                        isInputValid = false;
+                        alertMessage = 'Alasan harus diisi minimal 2 kata.';
+                    }
+                } else if (input.id === 'usia') {
+                    const age = parseInt(input.value, 10);
+                    if (input.value.trim() === '') {
+                        isInputValid = false;
+                    } else if (isNaN(age) || age < 17 || age > 100) {
+                        isInputValid = false;
+                        alertMessage = 'Mohon masukkan usia antara 17 hingga 100 tahun.';
+                    }
+                } else {
+                    isInputValid = input.value.trim() !== '';
+                }
+
+                if (!isInputValid) {
+                    const parent = input.closest('.question-container');
+                    if (parent && !firstInvalidInputParent) {
+                        firstInvalidInputParent = parent;
+                    }
+                    if (!alertMessage) {
+                        alertMessage = 'Mohon isi semua kolom yang wajib diisi dengan benar.';
+                    }
+                    break; 
+                }
+            }
+
+            if (firstInvalidInputParent) {
+                firstInvalidInputParent.classList.add('ring-2', 'ring-red-500');
+                alert(alertMessage);
+                return false;
+            }
+
+            return true;
+        }
+
+        nextBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (validateStep(currentStep)) {
+                    currentStep++;
+                    showStep(currentStep);
+                } 
+            });
+        });
+
+        prevBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                currentStep--;
+                showStep(currentStep);
+            });
+        });
+
+        // Screening Logic
+        document.getElementById('screening-next-btn').addEventListener('click', () => {
+            if (validateStep(currentStep)) {
+                const isFisip = form.querySelector('input[name="screening_fisip"]:checked').value;
+                const hasBought = form.querySelector('input[name="screening_pernah_beli"]:checked').value;
+                if (isFisip === 'ya' && hasBought === 'ya') {
+                    currentStep++;
+                    showStep(currentStep);
+                } else {
+                    showStep(9); // Show ineligible step
+                }
+            }
+        });
+
+        // 'Lainnya' input visibility logic
+        form.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const name = e.target.name;
+                const lainnyaInput = form.querySelector(`input[name="${name}_lainnya"]`);
+                if (lainnyaInput) {
+                    if (e.target.value === 'lainnya') {
+                        lainnyaInput.style.display = 'block';
+                        lainnyaInput.required = true;
+                    } else {
+                        lainnyaInput.style.display = 'none';
+                        lainnyaInput.required = false;
+                        lainnyaInput.value = ''; // Clear value
+                    }
+                }
+            });
+        });
+        
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Final validation is optional here since next button already validates, but good for safety
+            if (validateStep(currentStep)) {
+                 console.log('Form submitted successfully!');
+                 showStep(8); // Show success thank you page
+            }
+        });
+        
+        // Initial setup
+        populateQuestions();
+        showStep(currentStep);
+    </script>
+</body>
+</html>
+
