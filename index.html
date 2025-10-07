@@ -58,7 +58,7 @@
                 <div id="progress-bar" class="bg-[#F9A620] h-2.5 rounded-r-full progress-bar-fill" style="width: 0%"></div>
             </div>
 
-            <form id="survey-form" class="p-8 md:p-12">
+            <form id="survey-form" action="https://formspree.io/f/xovknvgl" method="POST" class="p-8 md:p-12">
                 <!-- Step 1: Landing Page -->
                 <div id="step-1" class="form-step active">
                     <div class="hero-bg text-white p-10 rounded-lg text-center mb-8">
@@ -477,11 +477,10 @@
         });
         
         form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Final validation is optional here since next button already validates, but good for safety
-            if (validateStep(currentStep)) {
-                 console.log('Form submitted successfully!');
-                 showStep(8); // Show success thank you page
+            // We let the default HTML submission to Formspree happen
+            // But we do one final validation check before allowing it
+            if (!validateStep(currentStep)) {
+                e.preventDefault(); // Stop the form from submitting if validation fails
             }
         });
         
